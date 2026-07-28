@@ -14,7 +14,7 @@ connectDB();
 // Middleware
 app.use(
   cors({
-    origin: CLIENT_URL, // Vite default port
+    origin:process.env.CLIENT_URL, // Vite default port
     credentials: true,
   }),
 );
