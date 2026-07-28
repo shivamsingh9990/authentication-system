@@ -2,6 +2,9 @@ import express from 'express';
 import cors from 'cors';
 import connectDB from './config/db.js';
 import authRoutes from './routes/auth.js';
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 
@@ -11,7 +14,7 @@ connectDB();
 // Middleware
 app.use(
   cors({
-    origin: "https://authentication-system-gray.vercel.app", // Vite default port
+    origin:CLIENT_URL, // Vite default port
     credentials: true,
   }),
 );
