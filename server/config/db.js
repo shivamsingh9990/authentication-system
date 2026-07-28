@@ -4,7 +4,7 @@ const connectDB = async () => {
   try {
     // Using local MongoDB. If you want to use MongoDB Atlas, replace with your connection string
     const conn = await mongoose.connect(
-      MONGO_URI,
+      process.env.MONGO_URI,
 
       {
         useNewUrlParser: true,
