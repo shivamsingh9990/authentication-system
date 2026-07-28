@@ -1,7 +1,7 @@
-import express from 'express';
-import cors from 'cors';
-import connectDB from './config/db.js';
-import authRoutes from './routes/auth.js';
+import express from "express";
+import cors from "cors";
+import connectDB from "./config/db.js";
+import authRoutes from "./routes/auth.js";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -14,7 +14,7 @@ connectDB();
 // Middleware
 app.use(
   cors({
-    origin:CLIENT_URL, // Vite default port
+    origin: CLIENT_URL, // Vite default port
     credentials: true,
   }),
 );
@@ -22,11 +22,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Routes
-app.use('/api/auth', authRoutes);
+app.use("/api/auth", authRoutes);
 
 // Basic route
-app.get('/', (req, res) => {
-  res.json({ message: 'Authentication API Server Running' });
+app.get("/", (req, res) => {
+  res.json({ message: "Authentication API Server Running" });
 });
 
 // Error handling middleware
@@ -34,7 +34,7 @@ app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({
     success: false,
-    message: 'Internal server error'
+    message: "Internal server error",
   });
 });
 
@@ -42,5 +42,5 @@ app.use((err, req, res, next) => {
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
-  console.log('Make sure MongoDB is running on mongodb://localhost:27017');
+  console.log("Make sure MongoDB is running on mongodb://localhost:27017");
 });
