@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { useAuth } from "../context/AuthContext";
+const VITE_API_URL = import.meta.env.VITE_API_URL;
 
 export default function Login() {
   const [formData, setFormData] = useState({
@@ -34,7 +35,7 @@ export default function Login() {
     }
 
     try {
-      const response = await axios.post(`${VITE_API_URL}/api/auth/Login`, {
+      const response = await axios.post(`${VITE_API_URL}/api/auth/login`, {
         email: formData.email,
         password: formData.password,
       });
